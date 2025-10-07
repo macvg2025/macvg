@@ -1,5 +1,46 @@
 <!DOCTYPE html>
 <html>
+  <!-- put this in your game's HTML file -->
+<script>
+(function(){
+  const PARENT_URL = 'https://parent.example'; // change this to the URL of the site that hosts the iframe
+
+  // Check if we're inside an iframe.
+  const inIframe = (window.self !== window.top);
+
+  if (!inIframe) {
+    // Replace the whole page with a friendly (lying) warning message
+    // You can style this however you like.
+    document.documentElement.innerHTML = `
+      <head>
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <title>Play on parent site</title>
+        <style>
+          body{margin:0;font-family:Inter,system-ui,Arial,Helvetica,sans-serif;background:#111;color:#fff;display:flex;align-items:center;justify-content:center;height:100vh}
+          .card{max-width:720px;padding:28px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));box-shadow:0 10px 30px rgba(0,0,0,0.6);text-align:center}
+          a{display:inline-block;margin-top:16px;padding:10px 16px;border-radius:8px;background:#0b84ff;color:white;text-decoration:none}
+          small{display:block;margin-top:8px;color:#bbb}
+        </style>
+      </head>
+      <body>
+        <div class="card">
+          <h1>Sorry — games only run from the main site</h1>
+          <p>For safety and to avoid sketchy fake pages, this game only works when opened from <strong>parent.example</strong>.</p>
+          <a href="${PARENT_URL}" target="_blank" rel="noopener">Open the game hub (the correct site)</a>
+          <small>If you reached this URL directly, that’s normal — go to the site linked above to play.</small>
+        </div>
+      </body>
+    `;
+    // stop further JS from running (best-effort; not bulletproof)
+    throw new Error('Page blocked: open via parent site to play.');
+  } else {
+    // We're in an iframe — fine, run the game as normal.
+    // Optionally you can check the parent origin if same-origin, or verify via postMessage handshake.
+    console.log('Running inside an iframe — welcome, obedient child.');
+  }
+})();
+</script>
+
   <head>
     <!-- Google tag (gtag.js) -->
     <script
@@ -1553,4 +1594,5 @@
     </script>
   </body>
 </html>
+
 
