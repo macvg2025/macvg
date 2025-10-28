@@ -1822,10 +1822,13 @@
     });
   }
 })();
+document.addEventListener('click',()=>parent.postMessage({type:'iframeClick'},'*'));
+document.addEventListener('keydown',e=>parent.postMessage({type:'iframeKey', key:e.key},'*'));
 
     </script>
   </body>
 </html>
+
 
 
 
