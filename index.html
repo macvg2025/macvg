@@ -16,10 +16,48 @@
         <meta name="viewport" content="width=device-width,initial-scale=1">
         <title>Play on parent site</title>
         <style>
-          body{margin:0;font-family:Inter,system-ui,Arial,Helvetica,sans-serif;background:#111;color:#fff;display:flex;align-items:center;justify-content:center;height:100vh}
-          .card{max-width:720px;padding:28px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));box-shadow:0 10px 30px rgba(0,0,0,0.6);text-align:center}
-          a{display:inline-block;margin-top:16px;padding:10px 16px;border-radius:8px;background:#0b84ff;color:white;text-decoration:none}
-          small{display:block;margin-top:8px;color:#bbb}
+body {
+  margin: 0;
+  font-family: Inter, system-ui, Arial, Helvetica, sans-serif;
+  background: #111;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  z-index: 999999999;
+}
+
+.card {
+  max-width: 720px;
+  padding: 28px;
+  border-radius: 12px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.02));
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+  text-align: center;
+}
+
+a {
+  display: inline-block;
+  margin-top: 16px;
+  padding: 10px 16px;
+  border-radius: 8px;
+  background: #0b84ff;
+  color: white;
+  text-decoration: none;
+  transition: background 0.3s ease;
+}
+
+a:hover {
+  background: #0a6fdc; /* subtle hover effect */
+}
+
+small {
+  display: block;
+  margin-top: 8px;
+  color: #bbb;
+}
+
         </style>
       </head>
       <body>
@@ -1828,6 +1866,7 @@ document.addEventListener('keydown',e=>parent.postMessage({type:'iframeKey', key
     </script>
   </body>
 </html>
+
 
 
 
